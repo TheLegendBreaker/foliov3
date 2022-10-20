@@ -1,0 +1,30 @@
+
+@use "mixins.scss";
+
+.section--folio {
+	.section__clients-body {
+	}
+
+	.client {
+		margin: 40px 0;
+		&__figure {
+			margin: 0;
+			&-mockup {
+				max-height: 200px;
+				overflow: hidden;
+			}
+			&-mockup-file{
+				max-width: 100%;
+			}
+		}
+	}
+	.project {
+		margin: 40px 0;
+		&__figure {
+			margin: 0;
+			&-file {
+				max-width: 100%;
+			}
+		}
+	}
+}

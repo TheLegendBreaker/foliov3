@@ -1,0 +1,48 @@
+@use "mixins.scss";
+
+.section.section--hero {
+	height: calc(100vh - 3.5em);
+	padding-top: 50%;
+	@include mixins.smart-phone {
+		position: relative;
+		padding-top: 0;
+	}
+	.section__about {
+		transform: translateY(-50%);
+		margin-top: 50%;
+		@include mixins.smart-phone {
+			transform: translate(-50%, -50%);
+			position: absolute;
+			margin-left: 0;
+			margin-top: 0;
+			left: 50%;
+			top: 50%;
+		}
+		@include mixins.tablet {
+			//transform: translate(-50%, -50%);
+			//margin-left: 50%;
+		}
+		&-logo {
+			max-width: 50%;
+			margin: 0;
+			@include mixins.tablet(true) {
+				max-width: none;
+			}
+			@include mixins.laptop {
+				margin: 0 auto;
+			}
+			&-file {
+				width: 100%;
+			}
+		}
+		&-title {
+			font-size: 2rem;
+			&-tagline {
+				font-family: mont_heavy;
+			}
+		}
+		&-cta {
+			margin-top: 15px;
+		}
+	}
+}

@@ -1,0 +1,13 @@
+.section.section--navbar {
+	max-width: none;
+	.section__nav {
+		margin: 15px auto;
+		&-link {
+			padding: 15px 5px;
+			margin: 0 5px;
+			&--selected {
+				font-family: mont_heavy;
+			}
+		}
+	}
+}

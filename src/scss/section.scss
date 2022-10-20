@@ -1,0 +1,123 @@
+@use "animations.scss";
+@use "mixins.scss";
+
+.section {
+	max-width: 80%;
+	margin: 0 auto;
+	opacity: 0;
+	@include mixins.desktop {
+		font-size: 1.5rem;
+	}
+	&__title {
+		&--sr {
+			position: absolute;
+			opacity: 0;
+		}
+	}
+	&__intro {
+	}
+	&__profile {
+		&-crop {
+			border-radius: 100px;
+			overflow: hidden;
+			height: 200px;
+			width: 200px;
+			@include mixins.tablet {
+				vertical-align: middle;
+				display: inline-block;
+			}
+		}
+		&-img {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
+	}
+	&__msg {
+		@include mixins.tablet {
+			vertical-align: middle;
+			display: inline-block;
+			width: calc(100% - 200px);
+			padding: 0 30px;
+		}
+	}
+	.card {
+		margin: 40px 0;
+		@include mixins.tablet {
+			margin: 80px 0;
+			padding: 20px;
+		}
+		@include mixins.desktop {
+			font-size: 1.5rem;
+		}
+		&__title {
+			font-family: mont_heavy;
+			margin-bottom: 0;
+			@include mixins.laptop {
+				margin-bottom: 15px;
+			}
+		}
+		&__figure {
+			max-height: 200px;
+			overflow: hidden;
+			margin: 0 auto;
+			@include mixins.tablet {
+				vertical-align: middle;
+				display: inline-block;
+				max-width: 59%;
+			}
+			@include mixins.laptop {
+				max-height: 300px;
+			}
+			@include mixins.desktop {
+				max-height: 500px;
+			}
+			&-img {
+				max-width: 100%;
+				object-fit: cover;
+			}
+		}
+		&__summary {
+			@include mixins.tablet {
+				vertical-align: middle;
+				display: inline-block;
+				max-width: 40%;
+				padding: 0 28px;
+				&-list {
+					padding: 0;
+				}
+			}
+		}
+		&__cta-box {
+			&--hidden {
+				display: none;
+			}
+		}
+		@include mixins.tablet {
+			&:nth-of-type(odd) {
+				.card__summary {
+					float: left;
+				}
+			}
+		}
+	}
+	&--loadin {
+		@include animations.fadeIn();
+	}
+	&--loading {
+		@include animations.pulse();
+	}
+	&--loaded {
+		@include animations.fadeDown();
+	}
+	&__loading {
+		font-family: mont_heavy;
+		text-align: center;
+		font-size: 2rem;
+		padding: 50px;
+		width: 100%;
+		&--onload{
+			@include animations.fadeOut();
+		}
+	}
+}

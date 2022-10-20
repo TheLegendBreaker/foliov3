@@ -1,0 +1,19 @@
+include mixins
+
+section#prompts.prompts
+	.prompt-gallery
+		button.prompt-gallery__btn.prompt-gallery__btn--show
+			.prompt-gallery__btn-icon.prompt-gallery__btn-icon--show
+				span.prompt-gallery__btn-icon-sr eye icon
+			.prompt-gallery__btn-label
+				| Show
+		- var label = "view references"
+		.prompt-gallery__floor.prompt-gallery__floor--hidden
+			each prompt in prompts
+				+ promptCard(prompt.day, prompt.label, prompt.desc, prompt.referenceLink, label, prompt.referenceImg, '' )(id=prompt.cssId class="prompt-card--gallery")
+			button.prompt-gallery__btn.prompt-gallery__btn--hide
+				.prompt-gallery__btn-icon.prompt-gallery__btn-icon--hide
+					span.prompt-gallery__btn-icon-sr eye icon
+				.prompt-gallery__btn-label
+					| Hide
+

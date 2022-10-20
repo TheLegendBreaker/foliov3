@@ -1,0 +1,23 @@
+include ../mixins
+doctype html
+html(lang='en')
+	head
+		include ./head.pug
+		block head
+		block inlineStyles
+			link(rel="stylesheet" href="https://static.hectordiaz.pro/fonts/mont/stylesheet.css")
+			link(rel="stylesheet" href="style.css")
+			style
+				block styles
+
+		block title
+			title Hector Diaz, Web Developer
+
+	body.body
+		block body
+
+		block footer
+			include footer.pug
+
+		block scripts
+	include ./linkedScripts

@@ -1,0 +1,13 @@
+@use "mixins.scss";
+
+.section--footer {
+	@include mixins.tablet{
+		padding: 20px 0;
+	}
+	.section__links {
+		@include mixins.tablet{
+			text-align: right;
+			font-size: .8rem;
+		}
+	}
+}

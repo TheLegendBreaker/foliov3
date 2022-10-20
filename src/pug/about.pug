@@ -1,0 +1,14 @@
+include mixins
+
+section.about
+	h1.about__pg-title 
+		span.about__pg-title-sr Lobopod-tober
+		.about__pg-title-logo
+			img.about__pg-title-logo-img(alt="logo" src= "./lobopod_logo_mobile_v1_designed_by_hector_diaz.png")
+		.about__pg-title-suffix -tober
+		small.about__pg-title-clear "Lobopod - tober"
+	article#about.about__article
+		.loading-skeleton
+			h2 Loading ...
+		+ tipCTA("Like the Project?")(class="tip-cta--about")
+	.art-card.art-card--about
