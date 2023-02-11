@@ -1,14 +1,33 @@
+@use "media-query.scss";
 @use "animations.scss";
 @use "mixins.scss";
+@use "brand.scss";
 
 .section {
-	max-width: 80%;
-	margin: 0 auto;
 	opacity: 0;
+	.block {
+		color: brand.$body-white;
+		padding: 10px 0;
+		max-width: 80%;
+		margin: 0 auto;
+		width: 100%;
+		&__half {
+			vertical-align: middle;
+			display: inline-block;
+			width: 100%;
+			@include media-query.tablet {
+				max-width: 50%;
+			}
+			&--center {
+				text-align: center;
+			}
+		}
+	}
 	@include mixins.desktop {
 		font-size: 1.5rem;
 	}
 	&__title {
+		@include brand.font(true);
 		&--sr {
 			position: absolute;
 			opacity: 0;
@@ -58,13 +77,12 @@
 			}
 		}
 		&__figure {
-			max-height: 200px;
-			overflow: hidden;
-			margin: 0 auto;
+			margin: 20px auto;
+			max-width: 80%;
 			@include mixins.tablet {
 				vertical-align: middle;
 				display: inline-block;
-				max-width: 59%;
+				max-width: 33%;
 			}
 			@include mixins.laptop {
 				max-height: 300px;
@@ -78,11 +96,12 @@
 			}
 		}
 		&__summary {
+			width: 100%;
 			@include mixins.tablet {
 				vertical-align: middle;
 				display: inline-block;
-				max-width: 40%;
-				padding: 0 28px;
+				padding: 0 45px;
+				max-width: 66%;
 				&-list {
 					padding: 0;
 				}
@@ -96,7 +115,12 @@
 		@include mixins.tablet {
 			&:nth-of-type(odd) {
 				.card__summary {
-					float: left;
+					position: relative;
+					left: 33%;
+				}
+				.card__figure {
+					position: relative;
+					right: 66%;
 				}
 			}
 		}
@@ -116,8 +140,9 @@
 		font-size: 2rem;
 		padding: 50px;
 		width: 100%;
-		&--onload{
+		&--onload {
 			@include animations.fadeOut();
 		}
 	}
 }
+

@@ -1,0 +1,76 @@
+@use "media-query.scss";
+@use "animations.scss";
+@use "mixins.scss";
+@use "brand.scss";
+
+.btn {
+	background: transparent;
+	outline: none;
+	border: none;
+	&--open-single {
+		$color : brand.$title-green;
+		transition: margin 0.3s ease, box-shadow 0.3s ease;
+		@include mixins.btn-sides($color);
+		color: $color;
+		border-radius: 10px;
+		margin-left: 4px;
+		padding: 1rem;
+		border: solid;
+		&:active {
+			box-shadow: 0 0 0 $color;
+			margin-left: 0;
+		}
+	}
+	&--archive-open-single {
+		$color : brand.$bg;
+		@include mixins.set-btn($color, false);
+		font-size: .5rem;
+		padding: .5rem;
+		max-width: 90%;
+		height: 90%;
+	}
+	&--back {
+		$color : brand.$bg;
+		@include mixins.set-btn($color, false);
+		font-size: .5rem;
+		padding: .5rem;
+		max-width: 90%;
+		height: 90%;
+	}
+	&--open-archive {
+		position: absolute;
+		right: 0;
+		top: 8px;
+		$color : brand.$body-white;
+		@include mixins.set-btn($color, true);
+	}
+	&--close-modal {
+		$color : brand.$title-red;
+		@include mixins.set-btn($color, false);
+		background: brand.$body-white;
+		padding: 0.5rem 1rem;
+		position: relative;
+		font-size: .5rem;
+		margin: 0 auto;
+		display: block;
+		z-index: 10;
+		width: 80%;
+	}
+
+	&--cta {
+		box-shadow: -4px 4px 0 brand.$title-red;
+		color: brand.$title-red;
+		text-decoration: none;
+		display: inline-block;
+		border-radius: 10px;
+		margin-left: 4px;
+		margin-top: 2rem;
+		font-size: 1rem;
+		padding: 1rem;
+		border: solid;
+		@include media-query.laptop {
+			font-size: 2rem;
+			margin-top: 0;
+		}
+	}
+}

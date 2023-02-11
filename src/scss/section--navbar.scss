@@ -1,5 +1,13 @@
+@use "media-queries.scss";
+@use "mixins.scss";
+@use "brand.scss";
+
 .section.section--navbar {
 	max-width: none;
+	@include media-queries.sm-smart-phone(true){
+		@include mixins.center-x;
+		bottom: 100%;
+	}
 	.section__nav {
 		margin: 15px auto;
 		&-link {

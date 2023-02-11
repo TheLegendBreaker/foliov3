@@ -1,9 +1,10 @@
 // url funcs
 
 var baseUrl = 'https://api.hectordiaz.pro/portfolio/wp-json/wp/v2';
-var basePostUrl = baseUrl+'/posts';
+var carouselPostUrl = baseUrl+'/carousel';
 var baseCatUrl = baseUrl+'/categories';
 var baseMediaUrl = baseUrl+'/media';
+var basePostUrl = baseUrl+'/posts';
 
 buildPostUrl = function(route="") {
 	const qUrl = basePostUrl + route;
@@ -34,6 +35,13 @@ getCategoryId = async function(catSlug="") {
 	return catId;
 }
 
+getCarouselPost = async function(){
+	const qUrl = carouselPostUrl+"/";
+	console.log(qUrl);
+ 	const posts = await getRequest(qUrl)
+	return posts;
+}
+
 getPostByCategory = async function(catSlug="",filter=""){
 	const posts = await getCategoryId(catSlug)
 		.then( catId => { 
@@ -59,9 +67,19 @@ getMediaBySlug = async function(qSlug=""){
 }
 // end filter request funcs
 
+getCarousel = async function() {
+	const carousel = getCarouselPost();
+	return carousel;
+}
+
 getThreeClients = async function() {
 	const clients = getPostByCategory('clients','&per_page=3');
 	return clients;
+}
+
+getArchive = async function(type) {
+	const archive = getPostByCategory(type);
+	return archive;
 }
 
 getClients = async function() {

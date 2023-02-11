@@ -30,6 +30,11 @@ const setCardFigure = () => {
 	figure.className = prefix + "figure";
 	return figure;
 };
+const setCardMockup = () => {
+	const mockup = document.createElement("mockup");
+	mockup.className = prefix + "mockup";
+	return mockup;
+};
 const setCardImg = () => {
 	const cardImg = document.createElement("img");
 	cardImg.className = prefix + "figure-img";
@@ -48,21 +53,25 @@ const setCardTitle = (data) => {
 };
 const setCard = (data) => {
 	const content = setContentHtml(data),
+		btn = setOpenSingleBtn(data.id),
 		title = setCardTitle(data),
 		figure = setCardFigure(),
 		card = setCardArticle(),
 		cardImg = setCardImg();
 
 	card.innerHTML = content;
-	figure.append(cardImg);
-	card.prepend(figure);
-	card.prepend(title);
+	body = card.querySelector(".card__summary");
+	body.append(btn);
 
-	card.querySelector(".card__summary-content ul").className =
-		"card__summary-list";
+
+	figure.append(cardImg);
+	card.append(figure);
+
+	card.prepend(title);
 
 	return card;
 };
+
 const setImgOnloadGetCard = (cardImg, card) => {
 	cardImg.onload = () => {
 		return card;
@@ -82,29 +91,17 @@ const getImgOnloadGetCard = (data) => {
 
 	return cardImg;
 };
-const removeLoadingUi = () => {
-	document.getElementById("folio").classList.remove("section--loading");
-};
-const addLoadedUi = (element) => {
-	element.classList.add("section--loaded");
-};
-const addLoadInUi = (element) => {
-	element.classList.add("section--loadin");
-};
-const onPageLoad = () => {
-	const sections = [
-		document.getElementById("footer").querySelector(".section"),
-		document.getElementById("contact"),
-		document.getElementById("folio"),
-	];
-	addLoadedUi(document.getElementById("hero"));
 
-	sections.forEach((section) => {
-		addLoadInUi(section);
-	});
-	//addloadedui(folio);
-	//addloadedui(hero);
+renderFolioClientsExcerpt = async function () {
+	await getThreeClients()
+		.then((items) => {
+			const container = document.querySelector("#folio .section__clients-body");
+			removeLoadingUi(container);
+			renderCards(items, container);
+		})
+		.catch((err) => console.log(err));
 };
+
 const renderCards = (items, container) => {
 	let imgSrc = "",
 		param = "";
@@ -129,27 +126,6 @@ const renderCards = (items, container) => {
 	}
 };
 
-renderFolioClientsExcerpt = async function () {
-	await getThreeClients()
-		.then((items) => {
-			const container = document.querySelector("#folio .section__clients-body");
-			removeLoadingUi(container);
-			renderCards(items, container);
-		})
-		.catch((err) => console.log(err));
-};
-
-renderFolioReviewExcerpts = async function () {
-	await getThreeReviews()
-		.then((items) => {
-			const container = document.querySelector(
-				"#folio .section__projects-body"
-			);
-			renderCards(items, container);
-		})
-		.catch((err) => console.log(err));
-};
-
 renderFolioProjectsExcerpt = async function () {
 	// Add open single as modal eventlistener call back.
 	await getProjects()
@@ -162,50 +138,6 @@ renderFolioProjectsExcerpt = async function () {
 		.catch((err) => console.log(err));
 };
 
-renderXpItems = async function () {
-	await getExperienceItems().then((items) => {
-		card = "";
-		if (items != undefined) {
-			for (const i in items) {
-				if (items[i].categories.length <= 1) {
-					card =
-						`
-							<div class="${i} card-container">
-							<article class="card">
-							<div class="main">
-							<h3 class="title"><span class="align">${items[i].title.rendered}</span></h3>
-							<div class="content">
-							<div class="align">
-							${items[i].content.rendered}
-							</article>
-							</div>
-							` + card;
-				}
-			}
-			document.querySelector("#xp div.xp-container").innerHTML = card;
-		}
-	});
-};
-
-renderStack = async function () {
-	await getStackOfChoice().then((stack) => {
-		if (stack != undefined) {
-			const card = `
-					<div class="card-container ">
-					<article class="card">
-					<div class="main">
-					${stack[0].content.rendered}
-					</div>
-					</article>
-					</div>
-					`;
-
-			document.querySelector("#stack div.container").innerHTML = card;
-		}
-	});
-};
-
-// end render funcs
 // page actions
 
 let target, lastTarget;
@@ -237,12 +169,35 @@ scrollActions = function () {
 
 //addEventListener("scroll", scrollActions);
 // end page actions
+const removeLoadingUi = () => {
+	document.getElementById("folio").classList.remove("section--loading");
+};
+const addLoadedUi = (element) => {
+	element.classList.add("section--loaded");
+};
+const addLoadInUi = (element) => {
+	element.classList.add("section--loadin");
+};
+
+const onPageLoad = () => {
+	const sections = [
+		document.getElementById("footer").querySelector(".section"),
+		document.getElementById("contact"),
+		document.getElementById("folio"),
+	];
+	addLoadedUi(document.getElementById("hero"));
+
+	sections.forEach((section) => {
+		addLoadInUi(section);
+	});
+};
 // invoke
 
 docReady(() => {
 	onPageLoad();
 	renderFolioClientsExcerpt();
 	renderFolioProjectsExcerpt();
+	renderCarousel();
 });
 
 //renderFolioReviewExcerpts();

@@ -1,16 +1,47 @@
+@use "media-query.scss";
 @use "mixins.scss";
+@use "brand.scss";
 
 .section.section--hero {
+	background-color: brand.$bg;
 	height: calc(100vh - 3.5em);
+	max-height: 900px;
 	padding-top: 50%;
-	@include mixins.smart-phone {
+	@mixin hero {
+		vertical-align: middle;
+		display: inline-block;
+	}
+	@include media-query.smart-phone {
 		position: relative;
 		padding-top: 0;
 	}
+	@include media-query.laptop {
+		max-height: none;
+	}
+	&:before {
+		background-image: url("https://api.hectordiaz.pro/portfolio/wp-content/uploads/sites/2/2022/10/laptop_illustration_mockup_hector_diaz_full_stack_web_developer.png");
+		background-repeat: no-repeat;
+		transform: translateY(-50%);
+		background-size: contain;
+		position: absolute;
+		max-width: 850px;
+		//content: "";
+		height: 70%;
+		width: 70%;
+		top: 50%;
+		left: 0;
+	}
+	.block {
+		position: relative;
+		height: 100%;
+		width: 100%;
+	}
 	.section__about {
 		transform: translateY(-50%);
-		margin-top: 50%;
-		@include mixins.smart-phone {
+		margin-top: 30%;
+		padding: 0 30px;
+		width: 100%;
+		@include media-query.smart-phone {
 			transform: translate(-50%, -50%);
 			position: absolute;
 			margin-left: 0;
@@ -18,25 +49,47 @@
 			left: 50%;
 			top: 50%;
 		}
-		@include mixins.tablet {
-			//transform: translate(-50%, -50%);
-			//margin-left: 50%;
-		}
 		&-logo {
-			max-width: 50%;
+			position: relative;
 			margin: 0;
+			&:before {
+				background: radial-gradient(#481a73 40%, transparent 71%);
+				position: absolute;
+				filter: blur(4px);
+				opacity: .66;
+				z-index: -5;
+				content: "";
+				height: 33%;
+				left: -20%;
+				right: 1%;
+				top: 75%;
+			}
 			@include mixins.tablet(true) {
-				max-width: none;
+				max-width: 60%;
 			}
 			@include mixins.laptop {
 				margin: 0 auto;
+				max-width: 55%;
+				@include hero;
 			}
 			&-file {
 				width: 100%;
 			}
 		}
+		&-body {
+			@include mixins.desktop {
+				padding-left: 30px;
+				font-size: 2rem;
+				@include hero;
+				max-width: 45%;
+			}
+		}
 		&-title {
-			font-size: 2rem;
+			color: brand.$title-green;
+			@include mixins.desktop {
+				font-size: 3rem;
+				//margin: 0 auto;
+			}
 			&-tagline {
 				font-family: mont_heavy;
 			}

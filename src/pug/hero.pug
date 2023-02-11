@@ -1,15 +1,18 @@
 section#hero.section.section--hero
-	h2.section__title.section__title--sr A quick summary of what Hector Diaz, Full Stack Web Developer offers
-	article.section__about
-		figure.section__about-logo
-			img.section__about-logo-file(src="https://static.hectordiaz.pro/hector-diaz-full-stack-web-developer-and-accessiblity-specialist--for-hire-logo.svg" alt="")
-		.section__about-body
-			h3.section__about-title 
-				.section__about-title-name Hector Diaz
-				.section__about-title-tagline Beautiful Websites <br/> Happy Clients
-			.section__about-article
-				| You can focus on what's important, while I contributed to your team's success.
-				.section__about-cta
-					| Let's meet to see if we would be a good fit.
-				include ./mixins.pug
-				+ navbar
+	.block
+		h2.section__title.section__title--sr A quick summary of what Hector Diaz, Full Stack Web Developer offers
+		article.section__about
+			figure.section__about-logo
+				//-img.section__about-logo-file(src="https://static.hectordiaz.pro/hector-diaz-full-stack-web-developer-and-accessiblity-specialist--for-hire-logo.svg" alt="")
+				#carousel.carousel
+				img.section__about-logo-file(src="https://api.hectordiaz.pro/portfolio/wp-content/uploads/sites/2/2022/10/laptop_illustration_mockup_hector_diaz_full_stack_web_developer-1.png" alt="")
+			.section__about-body
+				h3.section__about-title 
+					.section__about-title-name Hector Diaz
+					.section__about-title-tagline Beautiful Websites <br/> Happy Clients
+				.section__about-article
+					| You can focus on what's important, while I contributed to your team's success.
+					.section__about-cta
+						| Let's meet to see if we would be a good fit.
+					include ./mixins.pug
+					+ navbar

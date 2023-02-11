@@ -1,4 +1,13 @@
-.section--contact {
-	padding: 40px 0;
-	margin: 40px 0;
+@use "brand.scss";
+
+.section.section--contact {
+	.block {
+		color: brand.$bg;
+	}
+	.section__link {
+		color: brand.$title-red;
+	}
+	background-color: brand.$body-white;
+	padding: 40px 0 80px 0;
+	margin-top: 40px;
 }

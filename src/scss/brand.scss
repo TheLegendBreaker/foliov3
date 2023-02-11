@@ -1,0 +1,14 @@
+	$title-green: #c6f91f;
+	$title-aqua: #41ead4;
+	$body-white: #f7f7ff;
+	$title-red: #fb667a;
+	$bg: #473bf0;
+
+	@mixin font($bold) {
+		@if $bold {
+			font-family: mont_heavy;
+		}
+		@else {
+			font-family: mont;
+		}
+	}

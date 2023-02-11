@@ -1,4 +1,3 @@
-@use "media-query.scss";
 $sm-smartphone: 200px;
 $smartphone: 375px;
 $desktop: 1200px;
@@ -92,61 +91,3 @@ $tv: 1900px;
 }
 
 // end media queries
-@mixin transform($arg) {
-	transform: $arg;
-}
-
-@mixin center-x {
-	@include transform(translateX(-50%));
-	position: absolute;
-	left: 50%;
-}
-
-@mixin center-y {
-	@include transform(translateY(-50%));
-	position: absolute;
-	top: 50%;
-}
-
-@mixin center-xy {
-	@include transform(translate(-50%, -50%));
-	position: absolute;
-	left: 50%;
-	top: 50%;
-}
-
-@mixin btn-sides($color) {
-	box-shadow: -0.5rem 0.5rem 0 $color;
-	margin-left: 0.5rem;
-}
-
-@mixin btn-sides-lg($color) {
-	box-shadow: -1rem 1rem 0 $color;
-	margin-left: 1rem;
-}
-
-@mixin btn-press($color) {
-	&:active {
-		box-shadow: 0 0 0 $color;
-		margin-left: 0;
-	}
-}
-
-@mixin set-btn($color, $lg) {
-	transition: margin 0.3s ease, box-shadow 0.3s ease;
-	@include btn-sides($color);
-	@include btn-press($color);
-	color: $color;
-	border-radius: 10px;
-	font-size: 1rem;
-	padding: 1rem;
-	border: solid;
-
-	@if $lg {
-		@include media-query.laptop {
-			//@include btn-sides-lg($color);
-			font-size: 2rem;
-			margin-top: 0;
-		}
-	}
-}

@@ -1,7 +1,28 @@
 
 @use "mixins.scss";
+@use "brand.scss";
 
 .section--folio {
+	//background-color: brand.$title-red;
+	//color: brand.$bg;
+	.section__title {
+		color: brand.$title-aqua;
+	}
+	.section__break {
+		color: brand.$title-green;
+	}
+	.section__projects {
+		&-title {
+			max-width: 50%;
+		}
+		position: relative;
+	}
+	.section__clients {
+		&-title {
+			max-width: 40%;
+		}
+		position: relative;
+	}
 	.section__clients-body {
 	}
 

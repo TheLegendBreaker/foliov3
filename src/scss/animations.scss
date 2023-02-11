@@ -52,3 +52,15 @@
 	}
 	@include animate(fadeIn, 0.3s, ease-in-out, forwards);
 }
+
+@mixin scroll-up {
+	@include keyframes(scrollUp) {
+		75% {
+			transform: translateY(-50%);
+		}
+		100% {
+			transform: translateY(-100%);
+		}
+	}
+	@include animate(scrollUp, 3s, ease-in, forwards);
+}

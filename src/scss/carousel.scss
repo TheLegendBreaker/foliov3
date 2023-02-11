@@ -1,0 +1,32 @@
+@use "media-queries.scss";
+@use "animations.scss";
+@use "brand.scss";
+
+.carousel {
+	position: absolute;
+	overflow: hidden;
+	height: 50%;
+	width: 100%;
+	z-index: -1;
+	left: auto;
+	top: 3px;
+	@include media-queries.desktop{
+		top: 8px;
+	};
+	&__img{
+		background-image: linear-gradient(brand.$bg 50%, transparent 60%);
+		position: absolute;
+		top: 0;
+		&--scroll{
+			@include animations.scroll-up;
+			z-index: 15;
+		}
+		&--display{
+			z-index: 10;
+		}
+
+		&-file {
+			width: 100%;
+		}
+	}
+}
